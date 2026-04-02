@@ -1,5 +1,7 @@
 
 require("dotenv").config();
+const helmet = require("helmet");
+app.use(helmet());
 const express = require("express");
 const path = require("path");
 const userRoute = require('./routes/user');
@@ -27,6 +29,12 @@ app.use(checkForAuthenticationCookie("token"));
 
 app.use("/user", userRoute);
 app.use("/blog", blogRoute);
+app.use((req, res, next) => {
+  if (req.headers["x-forwarded-proto"] !== "https") {
+    return res.redirect(`https://${req.headers.host}${req.url}`);
+  }
+  next();
+});
 
 // server static all the images
 app.use(express.static(path.resolve('./public')));
