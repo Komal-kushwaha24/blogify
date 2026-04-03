@@ -1,7 +1,7 @@
 
 require("dotenv").config();
 const helmet = require("helmet");
-app.use(helmet());
+
 const express = require("express");
 const path = require("path");
 const userRoute = require('./routes/user');
@@ -10,6 +10,7 @@ const mongoose = require("mongoose");
 const cookiePaser = require('cookie-parser');
 const { checkForAuthenticationCookie } = require("./middlewares/authenticatiion");
 const app = express(); 
+app.use(helmet());
 const PORT = process.env.PORT || 8000;
 
 mongoose.connect(process.env.MONGO_URL)

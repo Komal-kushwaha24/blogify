@@ -2,9 +2,9 @@
   "name": "youtube_blog",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon app"
+    "start": "nodemon index"
   },
   "keywords": [],
   "author": "",
