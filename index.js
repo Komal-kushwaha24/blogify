@@ -20,11 +20,11 @@ const Blog = require('./models/blog');
 
 app.set("view engine" , "ejs");
 app.set("views" , path.resolve("./views"));
-
+app.use(express.json());
 app.use(express.urlencoded({extended:true
 }));
 
-
+console.log(process.env.MONGO_URL);
 app.use(cookiePaser());
 app.use(checkForAuthenticationCookie("token"));
 

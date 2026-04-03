@@ -33,6 +33,7 @@ router.post('/signup', async (req, res)=>{
         email,
         password,
     });
+    console.log("User created:", user);
     return res.redirect("/");
 });
 module.exports = router;
